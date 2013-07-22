@@ -3,11 +3,11 @@
 class Solution {
 public:
 
-    int sortPartition(std::vector<int> &numbers, int start, int end, std::vector<int> &indices)
+    int sortPartition(std::vector<int> &numbers, int start, int stop, std::vector<int> &indices)
     {
-        const int x = numbers[end];
+        const int x = numbers[stop];
         int i = start - 1;
-        for (int j = start; j < end; ++j) {
+        for (int j = start; j < stop; ++j) {
             if (numbers[j] <= x) {
                 i = i+1;
                 if (i != j) {
@@ -21,23 +21,23 @@ public:
             }
         }
         i = i+1;
-        if (i != end) {
+        if (i != stop) {
             const int tmp = numbers[i];
-            numbers[i] = numbers[end];
-            numbers[end] = tmp;
+            numbers[i] = numbers[stop];
+            numbers[stop] = tmp;
             const int tmpIndex = indices[i];
-            indices[i] = indices[end];
-            indices[end] = tmpIndex;
+            indices[i] = indices[stop];
+            indices[stop] = tmpIndex;
         }
         return i;
     }
     
-    void quickSort(std::vector<int> &numbers, int start, int end, std::vector<int> &indices)
+    void quickSort(std::vector<int> &numbers, int start, int stop, std::vector<int> &indices)
     {
-        if (start < end) {
-            const int q = sortPartition(numbers, start, end, indices);
+        if (start < stop) {
+            const int q = sortPartition(numbers, start, stop, indices);
             quickSort(numbers, start, q - 1, indices);
-            quickSort(numbers, q + 1, end, indices);
+            quickSort(numbers, q + 1, stop, indices);
         }
     }
     
