@@ -27,8 +27,14 @@ public:
     }
     
     ListNode *mergeKLists(vector<ListNode *> &lists) {
+        // k: number of sorted linked list
+        // n: average ListNode count of each sorted linked list
+        // total time complexity: n x k
+
         ListNode *head = NULL, *next = NULL;
+        // n times
         do {
+            // k times
             ListNode *tmp = minNode(lists);
             if (next == NULL) {
                 next = tmp;
