@@ -22,7 +22,7 @@ public:
             ListNode *start = head;
             while (count < k && head != NULL) {
                 head = head->next;
-                count++;
+                ++count;
             }
             
             if (count == k) {
@@ -41,7 +41,6 @@ public:
                 curTail = start;
             } else {
                 if (ret == NULL) {
-                    curTail = head;
                     ret = start;
                 } else {
                     curTail->next = start;
